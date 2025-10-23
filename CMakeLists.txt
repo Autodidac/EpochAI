@@ -47,8 +47,9 @@ endif()
 add_subdirectory("cmakeapp1")
 add_subdirectory("app1")
 
-add_subdirectory ("Application1")
-add_subdirectory ("StaticLib1")
+add_subdirectory("Application1")
+add_subdirectory("StaticLib1")
+add_subdirectory("epochai")
 
 
 

@@ -31,10 +31,14 @@ find_package(Threads QUIET)
 
 if(fmt_FOUND)
     message(STATUS "Using fmt.")
-
-    target_link_libraries(StaticLib1 PRIVATE fmt::fmt Threads::Threads)
+    if(Threads_FOUND)
+        target_link_libraries(StaticLib1 PRIVATE fmt::fmt Threads::Threads)
+    else()
+        target_link_libraries(StaticLib1 PRIVATE fmt::fmt)
+    endif()
 else()
-    message(FATAL_ERROR "Required packages (fmt) not found. Please install them via your package manager or vcpkg.")
+    message(WARNING "fmt not found. Skipping build of StaticLib1.")
+    return()
 endif()
 
 

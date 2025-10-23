@@ -12,7 +12,7 @@ add_executable(app1
     include/utils.hpp
 )
 
-find_package(fmt CONFIG REQUIRED)
+find_package(fmt CONFIG QUIET)
 
 # Include headers and link to library
 target_include_directories(app1 PRIVATE
@@ -24,8 +24,13 @@ target_link_directories(app1 PRIVATE
     ${VCPKG_INSTALLATION_ROOT}/x64-linux/lib
 )
 
+if(NOT fmt_FOUND)
+    message(WARNING "fmt not found. Skipping build of app1.")
+    return()
+endif()
+
 target_link_libraries(app1 PRIVATE
-    fmt
+    fmt::fmt
 )
 
 # Installation rule
