@@ -48,17 +48,21 @@ target_compile_options(${PROJECT_NAME}
 
 
 # Find and link dependencies
-find_package(fmt CONFIG REQUIRED)
+find_package(fmt CONFIG QUIET)
 find_package(Threads QUIET)
 # Link fmt and threads
 
 
 if(fmt_FOUND)
     message(STATUS "Using fmt.")
-
-    target_link_libraries(${PROJECT_NAME} PRIVATE fmt::fmt Threads::Threads)
+    if(Threads_FOUND)
+        target_link_libraries(${PROJECT_NAME} PRIVATE fmt::fmt Threads::Threads)
+    else()
+        target_link_libraries(${PROJECT_NAME} PRIVATE fmt::fmt)
+    endif()
 else()
-    message(FATAL_ERROR "Required packages (fmt) not found. Please install them via your package manager or vcpkg.")
+    message(WARNING "fmt not found. Skipping build of ${PROJECT_NAME}.")
+    return()
 endif()
 
 # Install rules
