@@ -3,9 +3,9 @@
 
 # Determine compiler and assign a friendly name for the install folder
 if [ "$1" == "gcc" ]; then
-  COMPILER_NAME="GCC"
+  COMPILER_NAME="gcc"
 elif [ "$1" == "clang" ]; then
-  COMPILER_NAME="Clang"
+  COMPILER_NAME="clang"
 else
   echo "Usage: $0 [gcc|clang] [Debug|Release]"
   exit 1
@@ -19,11 +19,10 @@ else
 fi
 
 # Build directory matching the naming convention from the build script
-BUILD_DIR="Bin/${COMPILER_NAME}-${BUILD_TYPE}"
+BUILD_DIR="build/${COMPILER_NAME}/${BUILD_TYPE}"
 
-# Define the install prefix within built/bin, creating a subfolder for each configuration
-INSTALL_PREFIX="${PWD}/built/bin/${COMPILER_NAME}-${BUILD_TYPE}"
-mkdir -p "$INSTALL_PREFIX"
+# Install prefix shared with the build configuration step
+INSTALL_PREFIX="${PWD}/built"
 
-# For multi-config generators, specify the configuration if provided, and override the install prefix
+# Perform the installation, forwarding the configuration for multi-config generators
 cmake --install "$BUILD_DIR" --config "$BUILD_TYPE" --prefix "$INSTALL_PREFIX"

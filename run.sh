@@ -4,6 +4,13 @@
 # Get the script's directory
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# Run the Vulkan application from the script directory
-#"$SCRIPT_DIR/VulkanApplication1"
-"$SCRIPT_DIR/Bin/linux-debug/cmakeapp1/cmakeapp1"
+# Path to the installed binary (produced by install.sh)
+APP_PATH="$SCRIPT_DIR/built/bin/epochai"
+
+if [ ! -x "$APP_PATH" ]; then
+  echo "Could not find executable at $APP_PATH"
+  echo "Please run ./build.sh <compiler> <config> followed by ./install.sh <compiler> <config>."
+  exit 1
+fi
+
+"$APP_PATH" "$@"

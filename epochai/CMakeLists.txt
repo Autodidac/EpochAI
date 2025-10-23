@@ -27,3 +27,5 @@ else()
     target_compile_options(epochai PRIVATE -Wall -Wextra -Wpedantic)
 endif()
 
+install(TARGETS epochai RUNTIME DESTINATION bin)
+
