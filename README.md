@@ -4,6 +4,10 @@
 The Ultimate Hello World - Cross Platform, Multi Editor Enabled Application/Library Project Template For C++20
 Contains scripts and build systems to build with virtually any Compiler on any IDE, Code Editor, or Terminal
 
+## Documentation
+
+- [Architecture Overview](docs/architecture.md) — Learn how the core modules (`Application`, `StateManager`, tokenizer, and HTTP client) collaborate at runtime.
+- [Autodidact Loop Roadmap](docs/roadmap.md) — Track milestones and checkpoints for the tokenizer revamp, learner upgrade, and autonomy layers.
 
 ## NOTICE : You'll want to immediately change the license info upon use of this template repo, make it your own you have permission, thank you! I just don't want anything coming back on me otherwise it's already probably mostly public domain anyways, enjoy!
 all that I ask is that you DO change the license to your own name or company, pseudonym.. so that you make it your OWN template, and a simple acknowledgement is appreciated, take care! 
