@@ -35,6 +35,7 @@ Debug/
 Release/
 x64/*
 out/
+build/
 build_clang/
 built/
 build_gcc/
@@ -42,17 +43,7 @@ vcpkg_installed/
 bin/*
 .vs/
 backup/
-app1/x64/
-Application1/x64/
-StaticLib1/x64/
-
-app1/Debug
-Application1/Debug
-StaticLib1/Debug
-
-app1/Release
-Application1/Release
-StaticLib1/Release
+state/
 
 *.pdb
 *.idb
